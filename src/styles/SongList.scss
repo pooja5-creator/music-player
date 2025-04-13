@@ -162,9 +162,16 @@
 @media (max-width: 500px) {
   .music-list-container {
     padding: 0;
+    margin: 0;
+    width: 97%;
     .listContainer {
+        width: 100%;
+        padding: 0;
+        margin: 0;
       .MusicListBox {
         width: 100%;
+        padding-inline: 5px;
+        padding-top: 5px;
         .box {
           .SongNames {
             h1 {
