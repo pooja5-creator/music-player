@@ -1,0 +1,479 @@
+$main-width: 480px;
+$text-white: white;
+$background-light: rgba(255, 255, 255, 0.1);
+$hover-dark: rgb(60, 52, 52);
+$font-small: 14px;
+$font-medium: 16px;
+$font-large: 32px;
+
+@mixin center-flex($justify: center, $align: center, $direction: row, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin no-padding-margin {
+  margin: 0;
+  padding: 0;
+}
+
+.mainPlayContainer {
+  width: 100%;
+  width: $main-width;
+  height: 100%;
+  @include center-flex();
+
+  .smallPlayBox {
+    display: none;
+  }
+  .playBoxContainer {
+    width: 100%;
+    height: 708px;
+    padding: 20px;
+    @include center-flex(center, center, column, 40px);
+
+    &.playActive {
+      display: flex;
+      width: 100%;
+    }
+    .MusicName {
+      height: 100px;
+      @include center-flex(center, start, column, 8px);
+      h1 {
+        font-size: $font-large;
+        font-weight: 700;
+        line-height: 36px;
+        color: $text-white;
+        @include no-padding-margin;
+      }
+      p {
+        font-size: $font-medium;
+        font-weight: 400;
+        line-height: 24px;
+        opacity: 0.6;
+        color: $text-white;
+        @include no-padding-margin;
+      }
+    }
+
+    .thumbnailBox {
+      width: 100%;
+      max-width: $main-width;
+      height: 510px;
+      overflow: hidden;
+      border-radius: 8px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
+    .controls {
+      width: 100%;
+      max-width: $main-width;
+      min-height: 50px;
+      @include center-flex(start, start, column, 20px);
+
+      .musicLineRectangle {
+        width: 100%;
+        height: 6px;
+        margin-top: 15px;
+        border-radius: 16px;
+        background-color: $background-light;
+        overflow: hidden;
+        cursor: pointer;
+        .innerBox {
+          width: 10%;
+          height: 100%;
+          background-color: rgb(240, 242, 244);
+          cursor: pointer;
+        }
+      }
+      .timerText {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: -10px;
+        align-items: center;
+        color: rgb(229, 232, 234);
+        font-size: $font-small;
+      }
+      .MusicPlayBtns {
+        width: 100%;
+        height: 100px;
+        @include center-flex(space-between, center);
+        margin-top: 7px;
+
+        .threeDotContainer {
+          width: 50px;
+          @include center-flex();
+          cursor: pointer;
+          position: relative;
+
+          .menuBtn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: $background-light;
+            color: $text-white;
+            font-size: 22px;
+            @include center-flex();
+
+            &:hover {
+              background-color: $hover-dark;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+          .favPopup {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            border-radius: 12px;
+            padding: 8px 18px;
+            z-index: 10;
+            cursor: pointer;
+          }
+
+          .fav i {
+            font-size: 20px;
+            color: #ff4b5c;
+          }
+        }
+
+        .playBtn {
+          width: 150px;
+          @include center-flex(space-between, center);
+
+          .mainPlayBtn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: $text-white;
+            color: rgb(24, 21, 21);
+            @include center-flex();
+            opacity: 1;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $hover-dark;
+              color: $text-white;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+          span {
+            opacity: 60%;
+            font-size: 18px;
+            color: $text-white;
+            cursor: pointer;
+            &:hover {
+              opacity: 90%;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
+        .volumeControl {
+          position: relative;
+        }
+
+        .volumeBtn {
+          padding: 12px;
+          border-radius: 50%;
+          background-color: $background-light;
+          color: $text-white;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgb(60, 52, 52);
+            transition: all 0.2s ease-in-out;
+          }
+        }
+
+        .volumePopup {
+          position: absolute;
+          bottom: 40px;
+          left: -50px;
+          padding: 8px 12px;
+          border-radius: 12px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+          width: 80px;
+          z-index: 999;
+        }
+
+        .volumeBar {
+          background-color: rgba(255, 255, 255, 0.1);
+          height: 6px;
+          border-radius: 5px;
+          cursor: pointer;
+          width: 100%;
+          position: relative;
+        }
+
+        .innerVolume {
+          background-color: #f1f6f1;
+          height: 100%;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .mainPlayContainer {
+    width: 400px;
+    .playBoxContainer {
+      padding: 40px;
+      margin-right: 0;
+      .thumbnailBox {
+        height: 300px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainPlayContainer {
+    width: 85%;
+    height: auto;
+    margin-right: 0px;
+    justify-content: center;
+    align-items: center;
+    .playBoxContainer {
+      display: flex;
+      .MusicName {
+        width: 100%;
+        align-items: center;
+      }
+      .thumbnailBox {
+        width: 100%;
+        height: 400px;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .mainPlayContainer {
+    width: 90%;
+
+    .playBoxContainer {
+      padding: 0;
+      opacity: 0 !important;
+      transform: translateY(100%);
+      pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      background-color: rgb(15, 14, 14);
+      height: 90vh;
+      &.playActive {
+        opacity: 1 !important;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      justify-content: center;
+      align-items: center;
+    }
+    .smallPlayBox {
+      width: 100%;
+      height: 100px;
+      border-top: 2px solid white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &.showLoadingEffect {
+        display: none;
+      }
+      .MusicBanner {
+        width: 300px;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
+
+        .ImgContainer {
+          width: 60px;
+          height: 60px;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+          }
+        }
+        .MusicTitle {
+          width: 70%;
+          height: 60px;
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: column;
+          h1 {
+            font-size: 15px;
+            margin: 0;
+            padding: 0;
+            color: white;
+          }
+          p {
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            color: white;
+            opacity: 60%;
+          }
+        }
+      }
+      .rightSideBtns {
+        width: 80px;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .mainPlayBtn {
+          color: rgb(239, 238, 235);
+          font-size: 22px;
+        }
+        .upperArrow {
+          color: rgb(239, 238, 235);
+          font-size: 22px;
+          transition: all 1s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .mainPlayContainer {
+    .playBoxContainer {
+      padding: 0;
+      .MusicName {
+        width: 100%;
+        min-height: 50px;
+        h1 {
+          font-size: 25px;
+          padding-left: 10px;
+        }
+        p {
+          font-size: 12px;
+          padding-left: 10px;
+        }
+      }
+
+      .thumbnailBox {
+        width: 90%;
+        max-width: 480px;
+        height: 300px;
+      }
+      .controls {
+        width: 90%;
+        max-width: 480px;
+        min-height: 50px;
+        .musicLineRectangle {
+          width: 100%;
+
+          .innerBox {
+            height: 100%;
+            background-color: rgb(240, 242, 244);
+          }
+        }
+        .timerText {
+          width: 100%;
+        }
+        .MusicPlayBtns {
+          width: 100%;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .mainPlayContainer {
+    width: 95%;
+    .playBoxContainer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 50vh;
+      &.playActive {
+        display: flex;
+      }
+      justify-content: center;
+      align-items: center;
+    }
+    .smallPlayBox {
+      width: 100%;
+      height: 100px;
+      border-top: 2px solid white;
+      padding: 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .MusicBanner {
+        max-width: 250px;
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 15px;
+        padding-inline: 5px;
+        .ImgContainer {
+          width: 40px;
+          height: 40px;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+          }
+        }
+        .MusicTitle {
+          width: 70%;
+          height: 60px;
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: column;
+          h1 {
+            font-size: 13px;
+            margin: 0;
+            padding: 0;
+            color: white;
+          }
+          p {
+            font-size: 11px;
+            margin: 0;
+            padding: 0;
+            color: white;
+            opacity: 60%;
+          }
+        }
+      }
+      .rightSideBtns {
+        width: 80px;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .mainPlayBtn {
+          color: rgb(239, 238, 235);
+          font-size: 18px;
+        }
+        .upperArrow {
+          color: rgb(239, 238, 235);
+          font-size: 18px;
+          transition: all 1s ease-in-out;
+        }
+      }
+    }
+  }
+}

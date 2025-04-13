@@ -1,0 +1,49 @@
+.PlayContainer {
+  width: 100%;
+  min-height: 200px;
+  animation: fade 1.8s ease-in-out infinite;
+  margin-block: 50px;
+
+  .title {
+    width: 90%;
+    height: 30px;
+    background-color: rgb(103, 107, 103);
+    border-radius: 10px;
+  }
+  .artistName {
+    width: 70%;
+    height: 30px;
+    background-color: rgb(127, 130, 130);
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .boxContainer {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .box {
+      width: 80%;
+      height: 80%;
+      border-radius: 20px;
+      background-color: rgb(82, 87, 82);
+    }
+  }
+  .play {
+    width: 80%;
+    height: 100px;
+    border-radius: 20px;
+    background-color: rgb(82, 87, 82);
+    margin: 0 auto;
+  }
+}
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}

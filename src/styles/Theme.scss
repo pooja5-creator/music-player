@@ -1,0 +1,41 @@
+$themes: (
+  cowboy: (
+    background: linear-gradient( 70deg, #324f54,#090809),
+    color: white
+  ),
+  energy: (
+    background: linear-gradient( 70deg, #324f54,#090809),
+    color: white
+  ),
+  crazy: (
+    background: linear-gradient( 70deg, #38193d,#090809),
+    color: white
+  ),
+  orange: (
+    background: linear-gradient(to right, rgb(87, 18, 18), #0a0b0b),
+    color: #eee
+  ),
+  divine: (
+    background: linear-gradient(to right, #613f16, #0b0b0a),
+    color: #222
+  ),
+  emotional: (
+    background: linear-gradient(to right, #2a484f, #0a0b0b),
+    color: #222
+  ),
+  Worship: (
+    background: linear-gradient(to right, #6e1721, #0a0b0b),
+    color: #222
+  ),
+  default: (
+    background: linear-gradient(to right, #1e1e1e, #3a3a3a),
+    color: white
+  )
+);
+
+@each $name, $props in $themes {
+  .theme-#{$name} {
+    background: map-get($props, background);
+    color: map-get($props, color);
+  }
+}

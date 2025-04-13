@@ -1,0 +1,54 @@
+.shimmerContainer {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+  margin-top: 30px;
+  .box {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    animation: fade 1.8s ease-in-out infinite;
+    .circle {
+      width: 50px;
+      height: 50px;
+      background-color: rgb(159, 156, 153);
+      border-radius: 50%;
+    }
+    .NamedContainer {
+      width: 80%;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      gap: 10px;
+      flex-direction: column;
+      .box1 {
+        width: 80%;
+        height: 20px;
+        background-color: rgb(82, 87, 82);
+        border-radius: 4px;
+      }
+      .box2 {
+        width: 60%;
+        height: 20px;
+        background-color: rgb(103, 105, 103);
+        border-radius: 4px;
+      }
+    }
+  }
+}
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
